@@ -2,6 +2,7 @@
 This fog of war (FOW) system only reveals areas where light touches using godot's built-in 2d lighting system. This preserves FOW in areas that are shadowed by light-occluding objects. 
 
 Click image to see demo on youtube: 
+
 [![Video demo](http://img.youtube.com/vi/SyBqYFzUPOw/0.jpg)](http://www.youtube.com/watch?v=SyBqYFzUPOw)
 
 # Usage
