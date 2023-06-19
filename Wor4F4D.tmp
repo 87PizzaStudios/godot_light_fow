@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8i8se75oixsl"]
+
+[ext_resource type="Script" path="res://World.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://rub6n76ut5y1" path="res://flame.png" id="2_l3ldu"]
+[ext_resource type="Shader" path="res://convert_light_mask.gdshader" id="3_h5f63"]
+[ext_resource type="Texture2D" uid="uid://i0ccxwtbe6nw" path="res://icon.png" id="5_lmstc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ckt0l"]
+size = Vector2(640, 360)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_11rig"]
+polygon = PackedVector2Array(438, 219, 341, 187, 474, 154)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mwpfj"]
+viewport_path = NodePath("LightSubview/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s3ri"]
+resource_local_to_scene = true
+shader = ExtResource("3_h5f63")
+shader_parameter/light_texture = SubResource("ViewportTexture_mwpfj")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_limae"]
+
+[sub_resource type="Gradient" id="Gradient_ugsfr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1gpru"]
+gradient = SubResource("Gradient_ugsfr")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_x3ovc"]
+viewport_path = NodePath("AlphaSubview/SubViewport")
+
+[node name="World" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+fog_color = null
+
+[node name="Fog" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_ckt0l")
+centered = false
+
+[node name="LightSubview" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="LightSubview"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294966273
+size = Vector2i(641, 359)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="LightSubview/SubViewport"]
+offset_right = 637.0
+offset_bottom = 359.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="LightSubview/SubViewport"]
+color = Color(0, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LightSubview/SubViewport"]
+position = Vector2(-176, -5.99998)
+occluder = SubResource("OccluderPolygon2D_11rig")
+
+[node name="Light" type="PointLight2D" parent="LightSubview/SubViewport"]
+position = Vector2(291.554, 40.8915)
+scale = Vector2(0.771484, 0.800781)
+energy = 1.75
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 2.4
+shadow_item_cull_mask = 3
+texture = ExtResource("2_l3ldu")
+texture_scale = 10.0
+
+[node name="AlphaSubview" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="AlphaSubview"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="AlphaSubview/SubViewport"]
+material = SubResource("ShaderMaterial_8s3ri")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_limae")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1gpru")
+expand_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect"]
+position = Vector2(172.984, 65.8574)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TextureRect"]
+position = Vector2(461.81, 228.204)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TextureRect"]
+position = Vector2(113.206, 289.87)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="TextureRect"]
+position = Vector2(285.622, 192.967)
+scale = Vector2(0.275004, 0.275004)
+texture = ExtResource("5_lmstc")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_x3ovc")
+expand_mode = 3

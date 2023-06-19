@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkbxk7rn3h0lv"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_061dn"]
+[ext_resource type="PackedScene" uid="uid://ba07kn2ollll2" path="res://fow_light.tscn" id="1_tluii"]
+[ext_resource type="Texture2D" uid="uid://rub6n76ut5y1" path="res://flame.png" id="2_l3ldu"]
+[ext_resource type="Texture2D" uid="uid://i0ccxwtbe6nw" path="res://icon.png" id="5_lmstc"]
+
+[sub_resource type="Gradient" id="Gradient_ugsfr"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1gpru"]
+gradient = SubResource("Gradient_ugsfr")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_11rig"]
+polygon = PackedVector2Array(421, 217, 340, 164, 350, 119, 377, 95, 424, 85, 470, 95, 520, 126, 511, 155, 474, 133, 435, 114, 387, 116, 372, 162, 400, 188, 437, 192, 478.296, 222.972, 517, 252, 486, 260)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bpqry"]
+polygon = PackedVector2Array(593, 68, 553, 66, 556, 115, 545, 156, 536, 204, 523, 255, 486, 297, 418, 299, 335, 309, 323, 325, 353, 330, 391, 318, 432, 312, 476, 312, 512, 309, 528, 275, 548, 247, 567, 193, 577, 145, 581, 98)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ksifd"]
+noise_type = 3
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brqfe"]
+noise = SubResource("FastNoiseLite_ksifd")
+
+[node name="World" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_061dn")
+
+[node name="OtherStuff" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1gpru")
+expand_mode = 3
+
+[node name="LightOccluders" type="Node" parent="OtherStuff"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+position = Vector2(-176, -5.99998)
+occluder = SubResource("OccluderPolygon2D_11rig")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_bpqry")
+
+[node name="Sprite2D" type="Sprite2D" parent="OtherStuff"]
+position = Vector2(172.984, 65.8574)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="OtherStuff"]
+position = Vector2(461.81, 228.204)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="OtherStuff"]
+position = Vector2(113.206, 289.87)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("5_lmstc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="OtherStuff"]
+position = Vector2(285.622, 192.967)
+scale = Vector2(0.275004, 0.275004)
+texture = ExtResource("5_lmstc")
+
+[node name="Light" type="PointLight2D" parent="OtherStuff"]
+position = Vector2(291.554, 40.8915)
+scale = Vector2(0.771484, 0.800781)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.4
+shadow_item_cull_mask = 3
+texture = ExtResource("2_l3ldu")
+texture_scale = 10.0
+
+[node name="FOW" parent="." node_paths=PackedStringArray("light", "light_occluders") instance=ExtResource("1_tluii")]
+layout_mode = 1
+fog_texture = SubResource("NoiseTexture2D_brqfe")
+light = NodePath("../OtherStuff/Light")
+light_occluders = NodePath("../OtherStuff/LightOccluders")
+
+[connection signal="on_light_moved" from="." to="FOW" method="on_light_moved"]
