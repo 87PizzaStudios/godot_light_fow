@@ -17,6 +17,13 @@ var mask_texture: Texture2D
 func _ready():	
 	var display_width = ProjectSettings.get("display/window/size/viewport_width")
 	var display_height = ProjectSettings.get("display/window/size/viewport_height")
+	var size_vec := Vector2(display_width, display_height)
+	
+	# set Viewports and TextureRects to window size
+	light_sv.set_size(size_vec)
+	mask_sv.set_size(size_vec)
+	$LightSubViewport/Background.set_size(size_vec)
+	$MaskSubViewport/TextureRect.set_size(size_vec)
 	
 	# mask
 	mask_image = Image.create(display_width, display_height, false, Image.FORMAT_RGBA8)
@@ -32,9 +39,7 @@ func _ready():
 		if occluder is LightOccluder2D:
 			light_sv.add_child(occluder.duplicate())
 	
-	# viewports
-	light_sv.set_size(Vector2(display_width, display_height))
-	mask_sv.set_size(Vector2(display_width, display_height))
+	# set shader params
 	material.set_shader_parameter('fog_texture', fog_texture)
 	material.set_shader_parameter('mask_texture', mask_texture)
 	mask.material.set_shader_parameter('mask_texture', mask_texture)
