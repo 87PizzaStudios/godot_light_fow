@@ -10,6 +10,6 @@ See the provided project for example usage. To add into your own projects, add t
 
 There are three exported variables in this scene to integrate with your project: 
 1. Fog Texture: This is the Texture2D instance used to overlay the scene.
-2. Light: This is a Light2D instance from your own project that will be used to reveal the scene. See the provided sample project for example. These 
-3. Light Occluders: This is a node in your scene hierarchy that has all of the light-occluding polygons as children. 
+2. Light: This is a Light2D instance from your own project that will be used to reveal the scene. See the provided sample project for example.
+3. Light Occluders: This is a node in your scene hierarchy that has all of the light-occluding polygons as children.
 
