@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkbxk7rn3h0lv"]
+[gd_scene load_steps=13 format=3 uid="uid://dkbxk7rn3h0lv"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_061dn"]
 [ext_resource type="PackedScene" uid="uid://ba07kn2ollll2" path="res://fow_light.tscn" id="1_tluii"]
@@ -12,10 +12,16 @@ colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
 gradient = SubResource("Gradient_ugsfr")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_11rig"]
-polygon = PackedVector2Array(421, 217, 340, 164, 350, 119, 377, 95, 424, 85, 470, 95, 520, 126, 511, 155, 474, 133, 435, 114, 387, 116, 372, 162, 400, 188, 437, 192, 478.296, 222.972, 517, 252, 486, 260)
+polygon = PackedVector2Array(361, 211, 340, 199, 333.931, 184.529, 327, 168, 324, 143, 336, 130, 345, 118, 377, 95, 399, 87, 424, 85, 446, 88, 470, 95, 497, 110, 520, 126, 524, 139, 522, 151, 511, 155, 501, 147, 486, 133, 462, 118, 435, 114, 414, 110, 387, 116, 365, 128, 349, 147, 350, 166, 359, 183, 374, 190, 399, 190, 421, 189, 437, 192, 442, 196, 444, 203, 439, 209, 420, 212, 392, 214)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bpqry"]
-polygon = PackedVector2Array(593, 68, 553, 66, 556, 115, 545, 156, 536, 204, 523, 255, 486, 297, 418, 299, 335, 309, 323, 325, 353, 330, 391, 318, 432, 312, 476, 312, 512, 309, 528, 275, 548, 247, 567, 193, 577, 145, 581, 98)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akmf6"]
+polygon = PackedVector2Array(411, 132, 429, 133, 444, 140, 448, 149, 449, 159, 445, 167, 431, 172, 420, 174, 404, 172, 394, 163, 395, 151, 399, 138)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vknc2"]
+polygon = PackedVector2Array(596, 219, 645, 219, 645, 163, 669, 163, 669, 218, 693, 170, 710, 180, 686, 228, 734, 228, 734, 245, 685, 245, 685, 282, 702, 281, 702, 260, 746, 260, 746, 212, 712, 212, 733, 171, 687, 149, 680, 169, 679, 137, 628, 138, 628, 197, 583, 197)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4fw6e"]
+polygon = PackedVector2Array(424, 234, 467, 234, 488, 238, 488, 303, 467, 302, 469, 253, 422, 252)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ksifd"]
 noise_type = 3
@@ -51,23 +57,33 @@ position = Vector2(-176, -5.99998)
 occluder = SubResource("OccluderPolygon2D_11rig")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
-occluder = SubResource("OccluderPolygon2D_bpqry")
+position = Vector2(-176, -5.99998)
+occluder = SubResource("OccluderPolygon2D_akmf6")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+position = Vector2(-176, -5.99998)
+occluder = SubResource("OccluderPolygon2D_vknc2")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_4fw6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="OtherStuff"]
-position = Vector2(172.984, 65.8574)
+position = Vector2(200, 142)
+scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("5_lmstc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="OtherStuff"]
-position = Vector2(461.81, 228.204)
+position = Vector2(518, 179)
+scale = Vector2(0.196797, 0.196797)
 texture = ExtResource("5_lmstc")
 
 [node name="Sprite2D3" type="Sprite2D" parent="OtherStuff"]
-position = Vector2(113.206, 289.87)
-scale = Vector2(1.76, 1.76)
+position = Vector2(34.34, 334.66)
+scale = Vector2(0.426875, 0.426875)
 texture = ExtResource("5_lmstc")
 
 [node name="Sprite2D4" type="Sprite2D" parent="OtherStuff"]
-position = Vector2(285.622, 192.967)
+position = Vector2(454, 269)
 scale = Vector2(0.275004, 0.275004)
 texture = ExtResource("5_lmstc")
 
