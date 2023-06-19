@@ -1,9 +1,8 @@
 # Light based fog of war in godot
 This fog of war (FOW) system only reveals areas where light touches using godot's built-in 2d lighting system. This preserves FOW in areas that are shadowed by light-occluding objects. 
 
-Click to see demo on youtube: 
-
-[![Video demo](http://img.youtube.com/vi/66bikNoWNJM/0.jpg)](http://www.youtube.com/watch?v=66bikNoWNJM)
+Click image to see demo on youtube: 
+[![Video demo](http://img.youtube.com/vi/SyBqYFzUPOw/0.jpg)](http://www.youtube.com/watch?v=SyBqYFzUPOw)
 
 # Usage
 See the provided project for example usage. To add into your own projects, add the provided `fow_light.tscn` as a node in your scene hierarchy. This node should go below any nodes you wish to shroud with FOW. 
