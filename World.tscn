@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkbxk7rn3h0lv"]
+[gd_scene load_steps=12 format=3 uid="uid://dkbxk7rn3h0lv"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_061dn"]
 [ext_resource type="PackedScene" uid="uid://ba07kn2ollll2" path="res://fow_light.tscn" id="1_tluii"]
 [ext_resource type="Texture2D" uid="uid://rub6n76ut5y1" path="res://flame.png" id="2_l3ldu"]
+[ext_resource type="Texture2D" uid="uid://hjrwvmx7pbb6" path="res://test_fog.png" id="5_e50fj"]
 [ext_resource type="Texture2D" uid="uid://i0ccxwtbe6nw" path="res://icon.png" id="5_lmstc"]
 
 [sub_resource type="Gradient" id="Gradient_ugsfr"]
@@ -22,13 +23,6 @@ polygon = PackedVector2Array(596, 219, 645, 219, 645, 163, 669, 163, 669, 218, 6
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4fw6e"]
 polygon = PackedVector2Array(424, 234, 467, 234, 488, 238, 488, 303, 467, 302, 469, 253, 422, 252)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ksifd"]
-noise_type = 3
-metadata/_preview_in_3d_space_ = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brqfe"]
-noise = SubResource("FastNoiseLite_ksifd")
 
 [node name="World" type="Control"]
 clip_contents = true
@@ -100,8 +94,9 @@ texture_scale = 10.0
 
 [node name="FOW" parent="." node_paths=PackedStringArray("light", "light_occluders") instance=ExtResource("1_tluii")]
 layout_mode = 1
-fog_texture = SubResource("NoiseTexture2D_brqfe")
+fog_texture = ExtResource("5_e50fj")
 light = NodePath("../OtherStuff/Light")
 light_occluders = NodePath("../OtherStuff/LightOccluders")
+fog_scroll_velocity = Vector2(0.01, -0.03)
 
 [connection signal="on_light_moved" from="." to="FOW" method="on_light_moved"]

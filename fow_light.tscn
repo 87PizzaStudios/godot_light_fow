@@ -6,6 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc2wf"]
 shader = ExtResource("1_uimtr")
+shader_parameter/fog_scroll_velocity = Vector2(0.1, 0.1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_obslj"]
 
@@ -15,6 +16,7 @@ viewport_path = NodePath("LightSubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8s3ri"]
 resource_local_to_scene = true
 shader = ExtResource("2_mrv3q")
+shader_parameter/persistent_reveal = true
 shader_parameter/light_texture = SubResource("ViewportTexture_n5ubc")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_limae"]
