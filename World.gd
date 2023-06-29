@@ -1,8 +1,9 @@
-extends Control
+extends Node2D
 signal on_light_moved(position: Vector2)
 
 
 @onready var light = $OtherStuff/Light
+@onready var camera = $OtherStuff/Light/Camera2D
 
 
 func _process(_delta):
