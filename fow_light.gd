@@ -17,8 +17,8 @@ var mask_image: Image
 var mask_texture: Texture2D
 
 func _ready():
-	var display_width = ProjectSettings.get("display/window/size/viewport_width")
-	var display_height = ProjectSettings.get("display/window/size/viewport_height")
+	var display_width = 1080
+	var display_height = 720
 	var size_vec := Vector2(display_width, display_height)
 
 	# set whether revealed area should be persistent

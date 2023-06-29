@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 signal on_light_moved(position: Vector2)
 
 
