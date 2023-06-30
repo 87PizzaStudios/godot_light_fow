@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkbxk7rn3h0lv"]
+[gd_scene load_steps=17 format=3 uid="uid://dkbxk7rn3h0lv"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_061dn"]
 [ext_resource type="PackedScene" uid="uid://ba07kn2ollll2" path="res://fow_light.tscn" id="1_tluii"]
 [ext_resource type="Texture2D" uid="uid://rub6n76ut5y1" path="res://flame.png" id="2_l3ldu"]
+[ext_resource type="Script" path="res://camera.gd" id="4_uir1x"]
 [ext_resource type="Texture2D" uid="uid://hjrwvmx7pbb6" path="res://test_fog.png" id="5_e50fj"]
 [ext_resource type="Texture2D" uid="uid://i0ccxwtbe6nw" path="res://icon.png" id="5_lmstc"]
 
@@ -182,7 +183,6 @@ scale = Vector2(0.275004, 0.275004)
 texture = ExtResource("5_lmstc")
 
 [node name="FOW" parent="OtherStuff" node_paths=PackedStringArray("light", "light_occluders") instance=ExtResource("1_tluii")]
-layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -213,5 +213,6 @@ limit_right = 1080
 limit_bottom = 720
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
+script = ExtResource("4_uir1x")
 
 [connection signal="on_light_moved" from="." to="OtherStuff/FOW" method="on_light_moved"]

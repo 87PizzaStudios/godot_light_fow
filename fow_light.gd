@@ -17,6 +17,7 @@ var mask_image: Image
 var mask_texture: Texture2D
 
 func _ready():
+	# TODO: do not hardcode these
 	var display_width = 1080
 	var display_height = 720
 	var size_vec := Vector2(display_width, display_height)
