@@ -196,6 +196,7 @@ fog_texture = SubResource("GradientTexture2D_ga7h8")
 fog_scroll_velocity = Vector2(0.01, -0.03)
 light = NodePath("../Light")
 light_occluder_group = "occluders"
+fow_scale_factor = 0.05
 
 [node name="Light" type="PointLight2D" parent="OtherStuff"]
 position = Vector2(291.554, 40.8915)
