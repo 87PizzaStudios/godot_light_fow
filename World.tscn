@@ -44,6 +44,8 @@ colors = PackedColorArray(0, 0, 0, 0.878431)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ga7h8"]
 gradient = SubResource("Gradient_w5xjt")
+width = 1080
+height = 720
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_061dn")
@@ -55,77 +57,77 @@ texture = SubResource("GradientTexture2D_1gpru")
 
 [node name="LightOccluders" type="Node" parent="OtherStuff"]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(-176, -5.99998)
 occluder = SubResource("OccluderPolygon2D_11rig")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(-176, -5.99998)
 occluder = SubResource("OccluderPolygon2D_akmf6")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(-176, -5.99998)
 occluder = SubResource("OccluderPolygon2D_vknc2")
 
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 occluder = SubResource("OccluderPolygon2D_4fw6e")
 
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(-59, 48)
 occluder = SubResource("OccluderPolygon2D_oceec")
 
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 occluder = SubResource("OccluderPolygon2D_cr5wb")
 
-[node name="LightOccluder2D7" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D7" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D8" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D8" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(3, 80)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D9" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D9" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(4, 163)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D10" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D10" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(10, 242)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D11" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D11" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(105, 241)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D12" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D12" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(99, 165)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D13" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D13" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(95, 83)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D14" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D14" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(93, -1)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D15" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D15" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(187, 1)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D16" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D16" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(190, 80)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D17" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D17" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(190, 166)
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D18" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D18" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 position = Vector2(194, 240)
 skew = -0.218166
 occluder = SubResource("OccluderPolygon2D_cg7nl")
 
-[node name="LightOccluder2D19" type="LightOccluder2D" parent="OtherStuff/LightOccluders"]
+[node name="LightOccluder2D19" type="LightOccluder2D" parent="OtherStuff/LightOccluders" groups=["occluders"]]
 occluder = SubResource("OccluderPolygon2D_h4bbe")
 
 [node name="Sprite2D" type="Sprite2D" parent="OtherStuff"]
@@ -188,19 +190,12 @@ position = Vector2(454, 269)
 scale = Vector2(0.275004, 0.275004)
 texture = ExtResource("5_lmstc")
 
-[node name="FOW" parent="OtherStuff" node_paths=PackedStringArray("light", "light_occluders") instance=ExtResource("1_tluii")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1080.0
-offset_bottom = 720.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="FOW" parent="OtherStuff" node_paths=PackedStringArray("light") instance=ExtResource("1_tluii")]
+layout_mode = 1
 fog_texture = SubResource("GradientTexture2D_ga7h8")
 fog_scroll_velocity = Vector2(0.01, -0.03)
 light = NodePath("../Light")
-light_occluders = NodePath("../LightOccluders")
+light_occluder_group = "occluders"
 
 [node name="Light" type="PointLight2D" parent="OtherStuff"]
 position = Vector2(291.554, 40.8915)
