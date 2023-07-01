@@ -29,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_obslj")
+expand_mode = 3
 script = ExtResource("2_bvefo")
 
 [node name="LightSubViewport" type="SubViewport" parent="."]
@@ -40,6 +41,7 @@ size = Vector2i(641, 359)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="LightSubViewport"]
+clip_contents = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="LightSubViewport"]
 color = Color(0, 0, 0, 1)
