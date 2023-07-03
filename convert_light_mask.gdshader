@@ -3,8 +3,8 @@ shader_type canvas_item;
 uniform bool persistent_reveal = true;
 
 
-uniform sampler2D light_texture: filter_nearest;
-uniform sampler2D mask_texture: filter_nearest;
+uniform sampler2D light_texture: filter_linear;
+uniform sampler2D mask_texture: filter_linear;
 
 void fragment() {
 	// use luminosity to set transparency

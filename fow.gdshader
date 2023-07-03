@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D fog_texture: filter_linear, repeat_enable;
-uniform sampler2D mask_texture: filter_nearest;
+uniform sampler2D mask_texture: filter_linear, repeat_enable;
 uniform vec2 fog_scroll_velocity = vec2(0.1, 0.1);
 
 void fragment() {

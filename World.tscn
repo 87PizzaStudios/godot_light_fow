@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkbxk7rn3h0lv"]
+[gd_scene load_steps=17 format=3 uid="uid://dkbxk7rn3h0lv"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_061dn"]
 [ext_resource type="PackedScene" uid="uid://ba07kn2ollll2" path="res://fow_light.tscn" id="1_tluii"]
 [ext_resource type="Texture2D" uid="uid://rub6n76ut5y1" path="res://flame.png" id="2_l3ldu"]
 [ext_resource type="Script" path="res://camera.gd" id="4_uir1x"]
 [ext_resource type="Texture2D" uid="uid://i0ccxwtbe6nw" path="res://icon.png" id="5_lmstc"]
+[ext_resource type="Texture2D" uid="uid://hjrwvmx7pbb6" path="res://test_fog.png" id="6_bjq5d"]
 
 [sub_resource type="Gradient" id="Gradient_ugsfr"]
 colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
@@ -38,17 +39,9 @@ polygon = PackedVector2Array(742, 101, 808, 102, 810, 149, 745, 149)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h4bbe"]
 polygon = PackedVector2Array(780, 605, 807, 495, 830, 605, 856, 491, 883, 602, 905, 488, 935, 599, 965, 487, 993, 596, 1021, 597, 959, 444, 934, 555, 902, 444, 881, 551, 852, 444, 830, 548, 805, 441, 758, 604, 782, 706, 801, 647, 819, 707, 842, 645, 875, 706, 898, 647, 930, 707, 942, 646, 984, 706, 992, 643, 1042, 705, 1030, 629, 1029, 674, 985, 625, 978, 681, 939, 632, 926, 674, 895, 625, 876, 684, 840, 625, 820, 679, 801, 629, 783, 672)
 
-[sub_resource type="Gradient" id="Gradient_w5xjt"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0.878431)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ga7h8"]
-gradient = SubResource("Gradient_w5xjt")
-width = 1080
-height = 720
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_061dn")
+metadata/movie_file = "C:\\Users\\Hudson\\Downloads\\test_movie_maker.mp4"
 
 [node name="OtherStuff" type="TextureRect" parent="."]
 offset_right = 1080.0
@@ -190,14 +183,6 @@ position = Vector2(454, 269)
 scale = Vector2(0.275004, 0.275004)
 texture = ExtResource("5_lmstc")
 
-[node name="FOW" parent="OtherStuff" node_paths=PackedStringArray("light") instance=ExtResource("1_tluii")]
-layout_mode = 1
-fog_texture = SubResource("GradientTexture2D_ga7h8")
-fog_scroll_velocity = Vector2(0.01, -0.03)
-light = NodePath("../Light")
-light_occluder_group = "occluders"
-fow_scale_factor = 0.05
-
 [node name="Light" type="PointLight2D" parent="OtherStuff"]
 position = Vector2(291.554, 40.8915)
 range_item_cull_mask = 3
@@ -209,12 +194,31 @@ texture = ExtResource("2_l3ldu")
 texture_scale = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="OtherStuff/Light"]
+z_index = 2
 limit_left = 0
 limit_top = 0
 limit_right = 1080
 limit_bottom = 720
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource("4_uir1x")
 
-[connection signal="on_light_moved" from="." to="OtherStuff/FOW" method="on_light_moved"]
+[node name="FOW" parent="." node_paths=PackedStringArray("light") instance=ExtResource("1_tluii")]
+offset_right = 1080.0
+offset_bottom = 720.0
+expand_mode = 0
+fog_texture = ExtResource("6_bjq5d")
+fog_scroll_velocity = Vector2(0.01, -0.03)
+persistent_reveal = true
+light = NodePath("../OtherStuff/Light")
+light_occluder_group = "occluders"
+fow_scale_factor = 0.5
+
+[connection signal="on_light_moved" from="." to="FOW" method="on_light_moved"]

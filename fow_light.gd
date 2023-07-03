@@ -1,4 +1,4 @@
-extends Control
+extends TextureRect
 class_name FogOfWar
 
 
@@ -30,6 +30,7 @@ func _ready():
 	var display_height = self.size.y
 	size_vec = fow_scale_factor * Vector2(display_width, display_height)
 	print(size_vec)
+	print(self.size)
 
 	# set Viewports and TextureRects to window size
 	light_sv.set_size(size_vec)
@@ -64,8 +65,12 @@ func _ready():
 	if persistent_reveal:
 		mask.material.set_shader_parameter('mask_texture', mask_texture)
 		
-func _process(_delta):
-	light_sv.get_texture().get_image().save_png('res://test_mask.png')
+func _input(event):
+	if event.is_action_pressed("screencap"):
+		print("Saving diagnostic images...")
+		light_sv.get_texture().get_image().save_png('res://cap_light.png')
+		mask_sv.get_texture().get_image().save_png('res://cap_mask.png')
+		get_viewport().get_texture().get_image().save_png('res://cap_game.png')
 
 func on_light_moved(pos: Vector2):
 	light_dup.position = fow_scale_factor * pos
