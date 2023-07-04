@@ -186,12 +186,18 @@ texture = ExtResource("5_lmstc")
 [node name="StationaryLight" type="PointLight2D" parent="OtherStuff" groups=["lights"]]
 position = Vector2(339, 308)
 color = Color(0.192157, 0.54902, 1, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = ExtResource("2_l3ldu")
 texture_scale = 8.0
 
 [node name="StationaryLight2" type="PointLight2D" parent="OtherStuff" groups=["lights"]]
-position = Vector2(357, 576)
+position = Vector2(449, 471)
 color = Color(1, 0.0901961, 0.462745, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = ExtResource("2_l3ldu")
 texture_scale = 8.0
 

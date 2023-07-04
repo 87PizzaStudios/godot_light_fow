@@ -4,7 +4,7 @@ class_name FogOfWar
 
 ## The texture to overlay as fog of war
 @export var fog_texture : Texture2D
-## Fog scroll velocity in units of pixels per second
+## Fog scroll velocity
 @export var fog_scroll_velocity:= Vector2(0.1, 0.1)
 ## Determines whether observed areas stay revealed after moving to a new area
 @export var persistent_reveal: bool = true
@@ -33,8 +33,7 @@ func _ready():
 	var display_width = self.size.x
 	var display_height = self.size.y
 	size_vec = fow_scale_factor * Vector2(display_width, display_height)
-	print(size_vec)
-	print(self.size)
+
 
 	# set Viewports and TextureRects to window size
 	light_sv.set_size(size_vec)
@@ -55,7 +54,7 @@ func _ready():
 			light_dup.position *= fow_scale_factor
 			light_dup.apply_scale(fow_scale_factor * Vector2(1.,1.))
 			light_sv.add_child(light_dup)
-			light_dups_dict[light] = light_dup
+			light_dups_dict[light.get_instance_id()] = light_dup
 
 
 	# add copies of the light occluders to the light subviewport
@@ -80,7 +79,7 @@ func _ready():
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		for light in light_dups_dict:
-			on_light_moved(light, light.position)
+			on_light_moved(light, instance_from_id(light).position)
 
 
 func _input(event):
@@ -90,8 +89,8 @@ func _input(event):
 		mask_sv.get_texture().get_image().save_png('res://cap_mask.png')
 		get_viewport().get_texture().get_image().save_png('res://cap_game.png')
 
-
-func on_light_moved(light: PointLight2D, pos: Vector2):
+# takes the instance ID and position of the in-game light to move the duplicate light and update fog
+func on_light_moved(light: int, pos: Vector2):
 	light_dups_dict[light].position = fow_scale_factor * pos
 	mask_image = mask_sv.get_texture().get_image()
 	mask_texture = ImageTexture.create_from_image(mask_image)
