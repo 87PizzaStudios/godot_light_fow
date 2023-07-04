@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://ba07kn2ollll2"]
 
-[ext_resource type="Shader" path="res://fow.gdshader" id="1_uimtr"]
-[ext_resource type="Script" path="res://fow_light.gd" id="2_bvefo"]
-[ext_resource type="Shader" path="res://convert_light_mask.gdshader" id="2_mrv3q"]
+[ext_resource type="Shader" path="res://fow/fow.gdshader" id="1_d60e8"]
+[ext_resource type="Script" path="res://fow/fow_light.gd" id="2_f8jnn"]
+[ext_resource type="Shader" path="res://fow/convert_light_mask.gdshader" id="3_li0u0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc2wf"]
-shader = ExtResource("1_uimtr")
+shader = ExtResource("1_d60e8")
 shader_parameter/fog_scroll_velocity = Vector2(0.1, 0.1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_obslj"]
@@ -22,7 +22,7 @@ viewport_path = NodePath("LightSubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8s3ri"]
 resource_local_to_scene = true
-shader = ExtResource("2_mrv3q")
+shader = ExtResource("3_li0u0")
 shader_parameter/persistent_reveal = true
 shader_parameter/light_texture = SubResource("ViewportTexture_n5ubc")
 
@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_obslj")
 expand_mode = 3
-script = ExtResource("2_bvefo")
+script = ExtResource("2_f8jnn")
 persistent_reveal = false
 
 [node name="LightSubViewport" type="SubViewport" parent="."]

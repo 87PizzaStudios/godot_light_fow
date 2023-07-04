@@ -82,13 +82,6 @@ func _ready():
 			on_light_moved(light, instance_from_id(light).position)
 
 
-func _input(event):
-	if event.is_action_pressed("screencap"):
-		print("Saving diagnostic images...")
-		light_sv.get_texture().get_image().save_png('res://cap_light.png')
-		mask_sv.get_texture().get_image().save_png('res://cap_mask.png')
-		get_viewport().get_texture().get_image().save_png('res://cap_game.png')
-
 # takes the instance ID and position of the in-game light to move the duplicate light and update fog
 func on_light_moved(light: int, pos: Vector2):
 	light_dups_dict[light].position = fow_scale_factor * pos

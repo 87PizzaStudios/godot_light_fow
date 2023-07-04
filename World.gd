@@ -9,3 +9,11 @@ func _process(_delta):
 		var pos = get_local_mouse_position()
 		light.position = pos
 		on_light_moved.emit(light.get_instance_id(), pos)
+
+
+func _input(event):
+	if event.is_action_pressed("screencap"):
+		print("Saving diagnostic images...")
+		$FOW/LightSubViewport.get_texture().get_image().save_png('res://cap_light.png')
+		$FOW/MaskSubViewport.get_texture().get_image().save_png('res://cap_mask.png')
+		get_viewport().get_texture().get_image().save_png('res://cap_game.png')
