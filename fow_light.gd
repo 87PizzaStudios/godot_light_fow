@@ -14,6 +14,8 @@ class_name FogOfWar
 @export var light_occluder_group: String
 ## Scales down the fow texture for more efficient computation
 @export_range(0.05,1.0) var fow_scale_factor := 1.
+## Whether to reveal at initial light location
+@export var initial_reveal: bool = true
 
 @onready var light_sv = $LightSubViewport
 @onready var mask_sv = $MaskSubViewport
@@ -64,6 +66,13 @@ func _ready():
 	material.set_shader_parameter('mask_texture', mask_texture)
 	if persistent_reveal:
 		mask.material.set_shader_parameter('mask_texture', mask_texture)
+	
+	# reveal at initial light location
+	if initial_reveal:
+		# workaround for node initialization order (possible engine bug?)
+		await get_tree().process_frame
+		await get_tree().physics_frame
+		on_light_moved(light_dup.position / fow_scale_factor)
 		
 func _input(event):
 	if event.is_action_pressed("screencap"):
