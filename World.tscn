@@ -183,7 +183,19 @@ position = Vector2(454, 269)
 scale = Vector2(0.275004, 0.275004)
 texture = ExtResource("5_lmstc")
 
-[node name="Light" type="PointLight2D" parent="OtherStuff"]
+[node name="StationaryLight" type="PointLight2D" parent="OtherStuff" groups=["lights"]]
+position = Vector2(339, 308)
+color = Color(0.192157, 0.54902, 1, 1)
+texture = ExtResource("2_l3ldu")
+texture_scale = 8.0
+
+[node name="StationaryLight2" type="PointLight2D" parent="OtherStuff" groups=["lights"]]
+position = Vector2(357, 576)
+color = Color(1, 0.0901961, 0.462745, 1)
+texture = ExtResource("2_l3ldu")
+texture_scale = 8.0
+
+[node name="Light" type="PointLight2D" parent="OtherStuff" groups=["lights"]]
 position = Vector2(291.554, 40.8915)
 range_item_cull_mask = 3
 shadow_enabled = true
@@ -218,6 +230,7 @@ fog_texture = ExtResource("6_bjq5d")
 fog_scroll_velocity = Vector2(0.01, -0.03)
 persistent_reveal = true
 light = NodePath("../OtherStuff/Light")
+light_group = "lights"
 light_occluder_group = "occluders"
 fow_scale_factor = 0.5
 

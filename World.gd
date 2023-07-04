@@ -9,4 +9,4 @@ func _process(_delta):
 		var pos = get_local_mouse_position()
 #		print(pos)
 		light.position = pos
-		on_light_moved.emit(pos)
+		on_light_moved.emit(light, pos)

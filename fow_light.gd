@@ -10,6 +10,8 @@ class_name FogOfWar
 @export var persistent_reveal: bool = true
 ## The light node in the game scene that will reveal fog of war
 @export var light: Light2D
+## Name of the group of lights
+@export var light_group: String
 ## Name of the group of light occluders
 @export var light_occluder_group: String
 ## Scales down the fow texture for more efficient computation
@@ -21,11 +23,13 @@ class_name FogOfWar
 @onready var mask_sv = $MaskSubViewport
 @onready var mask = $MaskSubViewport/TextureRect
 
-#var fog_image : Image
-var light_dup : Light2D
+
 var mask_image: Image
 var mask_texture: Texture2D
 var size_vec: Vector2
+# pairs of original and duplicate lights
+var light_dups_dict: Dictionary
+
 
 func _ready():
 	var display_width = self.size.x
@@ -46,11 +50,15 @@ func _ready():
 	mask_texture = ImageTexture.create_from_image(mask_image)
 
 	# add a copy of the light to the light subviewport
-	light_dup = light.duplicate()
-	light_dup.color = Color.WHITE
-	light_dup.position *= fow_scale_factor
-	light_dup.apply_scale(fow_scale_factor * Vector2(1.,1.))
-	light_sv.add_child(light_dup)
+	for light in get_tree().get_nodes_in_group(light_group):
+		if light is PointLight2D:
+			var light_dup: PointLight2D = light.duplicate()
+			light_dup.color = Color.WHITE
+			light_dup.position *= fow_scale_factor
+			light_dup.apply_scale(fow_scale_factor * Vector2(1.,1.))
+			light_sv.add_child(light_dup)
+			light_dups_dict[light] = light_dup
+
 
 	# add copies of the light occluders to the light subviewport
 	for occluder in get_tree().get_nodes_in_group(light_occluder_group):
@@ -68,13 +76,15 @@ func _ready():
 	if persistent_reveal:
 		mask.material.set_shader_parameter('mask_texture', mask_texture)
 	
-	# reveal at initial light location
+	# reveal at initial light locations
 	if initial_reveal:
 		# workaround for node initialization order (possible engine bug?)
 		await get_tree().process_frame
 		await get_tree().physics_frame
-		on_light_moved(light_dup.position / fow_scale_factor)
-		
+		for light in light_dups_dict:
+			on_light_moved(light, light.position)
+
+
 func _input(event):
 	if event.is_action_pressed("screencap"):
 		print("Saving diagnostic images...")
@@ -82,8 +92,9 @@ func _input(event):
 		mask_sv.get_texture().get_image().save_png('res://cap_mask.png')
 		get_viewport().get_texture().get_image().save_png('res://cap_game.png')
 
-func on_light_moved(pos: Vector2):
-	light_dup.position = fow_scale_factor * pos
+
+func on_light_moved(light: PointLight2D, pos: Vector2):
+	light_dups_dict[light].position = fow_scale_factor * pos
 	mask_image = mask_sv.get_texture().get_image()
 	mask_texture = ImageTexture.create_from_image(mask_image)
 	material.set_shader_parameter('mask_texture', mask_texture)
