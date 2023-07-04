@@ -9,12 +9,13 @@ Click image to see demo on youtube:
 The system duplicates the light sources and occluders into an unrendered [SubViewport](https://docs.godotengine.org/en/stable/classes/class_subviewport.html). We use a shader to compute the FOW alpha mask from the lighting in the SubViewport and blend this mask with a user-provided fog texture to create the effect. The mask calculations can hurt performance in high-resolution scenes. To reduce the overhead, the user can downscale the unrendered viewport to compute the alpha mask at a lower resolution than the native game resolution.   
 
 ## Usage
-To add into your own projects: 
-1. Add the provided `fow_light.tscn` as a node in your scene. 
-2. Create a [node group](https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html) with [PointLight2D](https://docs.godotengine.org/en/stable/classes/class_pointlight2d.html) nodes from your project. These lights will reveal fog.
-3. Create a second node group containing [LightOccluder2D](https://docs.godotengine.org/en/stable/classes/class_lightoccluder2d.html) nodes from your project.
-4. Set the scene arguments (see below).
-5. Implement signals to update the FOW scene with changes to your in-game light and occluder objects. 
+To add into your own projects:
+1. Copy the "fow" folder into your root project directory.
+2. Add the provided `fow_light.tscn` as a node in your scene. Adjust the size of the texture to fit your scene.
+3. Create a [node group](https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html) with [PointLight2D](https://docs.godotengine.org/en/stable/classes/class_pointlight2d.html) nodes from your project. These lights will reveal fog.
+4. Create a second node group containing [LightOccluder2D](https://docs.godotengine.org/en/stable/classes/class_lightoccluder2d.html) nodes from your project.
+5. Set the scene arguments (see below).
+6. Implement signals to update the FOW scene with changes to your in-game light and occluder objects. Emitting signals before the FOW scene finishes initializing may inadvertently disable the fog.
 
 See the provided project for example usage. 
 
