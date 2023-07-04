@@ -8,9 +8,7 @@ class_name FogOfWar
 @export var fog_scroll_velocity:= Vector2(0.1, 0.1)
 ## Determines whether observed areas stay revealed after moving to a new area
 @export var persistent_reveal: bool = true
-## The light node in the game scene that will reveal fog of war
-@export var light: Light2D
-## Name of the group of lights
+## Name of the group of lights that will reveal fog of war
 @export var light_group: String
 ## Name of the group of light occluders
 @export var light_occluder_group: String
