@@ -36,9 +36,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_obslj")
-expand_mode = 3
 script = ExtResource("2_f8jnn")
-persistent_reveal = false
+light_group = "lights"
+light_occluder_group = "occluders"
 
 [node name="LightSubViewport" type="SubViewport" parent="."]
 disable_3d = true

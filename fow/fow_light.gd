@@ -25,9 +25,10 @@ class_name FogOfWar
 var mask_image: Image
 var mask_texture: Texture2D
 var size_vec: Vector2
-# pairs of original and duplicate lights
-var light_dups_dict: Dictionary
 
+# pairs of original and duplicate lights and occluders
+var light_dups_dict: Dictionary
+var occluder_dups_dict: Dictionary
 
 func _ready():
 	var display_width = self.size.x
@@ -51,7 +52,7 @@ func _ready():
 		if light is PointLight2D:
 			var light_dup: PointLight2D = light.duplicate()
 			light_dup.color = Color.WHITE
-			light_dup.position *= fow_scale_factor
+			light_dup.position = light.global_position * fow_scale_factor
 			light_dup.apply_scale(fow_scale_factor * Vector2(1.,1.))
 			light_sv.add_child(light_dup)
 			light_dups_dict[light.get_instance_id()] = light_dup
@@ -64,6 +65,8 @@ func _ready():
 			occluder_dup.position *= fow_scale_factor
 			occluder_dup.apply_scale(fow_scale_factor * Vector2(1., 1.))
 			light_sv.add_child(occluder_dup)
+			occluder_dups_dict[occluder.get_instance_id()] = occluder_dup
+
 
 	# set shader params
 	mask.material.set_shader_parameter("persistent_reveal", persistent_reveal)

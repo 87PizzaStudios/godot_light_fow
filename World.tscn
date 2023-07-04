@@ -231,12 +231,8 @@ script = ExtResource("4_uir1x")
 [node name="FOW" parent="." instance=ExtResource("1_tluii")]
 offset_right = 1080.0
 offset_bottom = 720.0
-expand_mode = 0
 fog_texture = ExtResource("6_bjq5d")
 fog_scroll_velocity = Vector2(0.01, -0.03)
-persistent_reveal = true
-light_group = "lights"
-light_occluder_group = "occluders"
 fow_scale_factor = 0.5
 
 [connection signal="on_light_moved" from="." to="FOW" method="on_light_moved"]
