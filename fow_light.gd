@@ -47,6 +47,7 @@ func _ready():
 
 	# add a copy of the light to the light subviewport
 	light_dup = light.duplicate()
+	light_dup.color = Color.WHITE
 	light_dup.position *= fow_scale_factor
 	light_dup.apply_scale(fow_scale_factor * Vector2(1.,1.))
 	light_sv.add_child(light_dup)
