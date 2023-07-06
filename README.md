@@ -10,7 +10,7 @@ The system duplicates the light sources and occluders into an unrendered [SubVie
 
 ## Usage
 To add into your own projects:
-1. Copy the "fow" folder into your root project directory.
+1. Copy the [fow](fow) folder into your root project directory.
 2. Add the provided `fow_light.tscn` as a node in your scene. Adjust the size of the texture to fit your scene.
 3. Create a [node group](https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html) with [PointLight2D](https://docs.godotengine.org/en/stable/classes/class_pointlight2d.html) nodes from your project. These lights will reveal fog.
 4. Create a second node group containing [LightOccluder2D](https://docs.godotengine.org/en/stable/classes/class_lightoccluder2d.html) nodes from your project.
