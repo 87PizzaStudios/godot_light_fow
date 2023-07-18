@@ -82,7 +82,7 @@ func _ready():
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		for light in light_dups_dict:
-			on_light_moved(light, instance_from_id(light).position)
+			on_light_moved(light, instance_from_id(light).global_position)
 
 
 # takes the instance ID and position of the in-game light to move the duplicate light and update fog
