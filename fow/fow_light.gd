@@ -24,7 +24,7 @@ class_name FogOfWar
 
 var mask_image: Image
 var mask_texture: Texture2D
-var size_vec: Vector2
+var size_vec: Vector2i
 
 # pairs of original and duplicate lights and occluders
 var light_dups_dict: Dictionary
